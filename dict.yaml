@@ -12,6 +12,15 @@ SUBJECT:
             Grand_Lee_Genetics: bool
             Bousvaros_Immunoregulation: bool
             Further_Contact: bool
+            Reg_Blood: bool
+            Reg_Fecal: bool
+            Reg_Biopsy: bool
+            Reg_Oral: bool
+            Reg_Tissue: bool
+            Reg_Saliva: bool
+            Reg_Urine: bool
+            Reg_Other: bool
+                other_sample: string
     DEMOGRAPHIC:
         Race: category
         Hispanic or Latino: bool
@@ -39,69 +48,69 @@ SUBJECT:
        Base_Questionnaire: category
        Consanguinity: category
        Family_Dx: bool
-           IBD:
-                CD_Father: bool
-                CD_Mother: bool
-                CD_Son: bool
-                CD_Daughter: bool
-                CD_2nd_Degree: bool
-                CD_Brother: bool
-                CD_Sister: bool
-                CD_Twin: bool
-                UC_Father: bool
-                UC_Mother: bool
-                UC_Son: bool
-                UC_Daughter: bool
-                UC_2nd_Degree: bool
-                UC_Brother: bool
-                UC_Sister: bool
-                UC_Twin: bool
-                UIBD_Father: bool
-                UIBD_Mother: bool
-                UIBD_Son: bool
-                UIBD_Daughter: bool
-                UIBD_2nd_Degree: bool
-                UIBD_Brother: bool
-                UIBD_Sister: bool
-                UIBD_Twin: bool
-           1st_Degree_Autoimmune: category
-                Inflammatory_Arthritis: bool
-                Diabetes_Type_1: bool
-                Thyroiditis: bool
-                Psoriasis: bool
-                Systemic_Lupus_Erythematosus: bool
-                Vasculitis: bool
-                Other: bool
-                    other: string
-           1st_Degree_Immunodeficiency: category
-                CGD: bool
-                IL-10R_Deficiency: bool
-                IPEX: bool
-                NEMO: bool
-                WAS: bool
-                XLA: bool
-                Other: bool
-                    other: string
-           1st_Degree_CRC: category
+           ibd:
+                cd_father: bool
+                cd_mother: bool
+                cd_son: bool
+                cd_daughter: bool
+                cd_2nd_degree: bool
+                cd_brother: bool
+                cd_sister: bool
+                cd_twin: bool
+                uc_father: bool
+                uc_mother: bool
+                uc_son: bool
+                uc_daughter: bool
+                uc_2nd_degree: bool
+                uc_brother: bool
+                uc_sister: bool
+                uc_twin: bool
+                uibd_father: bool
+                uibd_mother: bool
+                uibd_son: bool
+                uibd_daughter: bool
+                uibd_2nd_degree: bool
+                uibd_brother: bool
+                uibd_sister: bool
+                uibd_twin: bool
+           1st_degree_autoimmune: category
+                inflammatory_arthritis: bool
+                diabetes_Type_1: bool
+                thyroiditis: bool
+                psoriasis: bool
+                systemic_lupus_erythematosus: bool
+                vasculitis: bool
+                other: bool
+                    what: string
+           1st_degree_immunodeficiency: category
+                cgd: bool
+                il10r_deficiency: bool
+                ipex: bool
+                nemo: bool
+                was: bool
+                xla: bool
+                other: bool
+                    what: string
+           1st_degree_crc: category
        Breastfed: category
                 apprx_duration: int
                 apprx_exclusive: str
        Caesarean: category
        Tobacco_Use: bool
-                tobacco_recent: bool
-                no_of_years: bool
-                packs_per_day: bool
-                smoker_6mo+: category
-                smoker_6mo-: category
-                mother_smoke: category
+           tobacco_recent: bool
+           no_of_years: bool
+           packs_per_day: bool
+           smoker_6mo+: category
+           smoker_6mo-: category
+           mother_smoke: category
        Alcohol_Use: category
-                alcohol_recent: category
-                years_of_use: int
-                drinks_per_day: int
+           alcohol_recent: category
+           years_of_use: int
+           drinks_per_day: int
        Antibiotic_Use: category
-                duration: string
+           duration: string
        Steroid_Use: category
-                duration: string
+           duration: string
        Perianal_Oral:
             perianal: category
             oral: category
@@ -132,7 +141,7 @@ SUBJECT:
             psc: bool
             autoimmune_hepatitis: bool
             other: bool
-                other:string
+                what:string
         Extraintestinal_Developed: category
             arthralgias: bool
             arthritis: bool
@@ -149,7 +158,7 @@ SUBJECT:
             thyroiditis: bool
             systemic_lupus_erythematosus: bool
             other: bool
-                other: string
+                what: string
         Immunodeficiency_Developed:
                 which: category
                     other: string
@@ -161,7 +170,7 @@ SUBJECT:
         Capsule: bool
           Not_done: bool
         Other: bool
-          other: string
+          what: string
         CD_Esophagus_Active: string
              endoscopy: bool
              histology: bool
@@ -306,7 +315,7 @@ SUBJECT:
                 dis_limited_chart_review: bool
                 dis_provider: bool
                 dis_other: bool
-                    dis_other: string
+                    dis_what: string
             aminosalicylates: category
                 mesalamine: category
                     discontinued: category
@@ -448,12 +457,126 @@ SUBJECT:
         Type: category
         Reason: category
     SAMPLES:
-        Reg_Blood: bool
-        Reg_Fecal: bool
-        Reg_Biopsy: bool
-        Reg_Oral: bool
-        Reg_Tissue: bool
-        Reg_Saliva: bool
-        Reg_Urine: bool
-        Reg_Other: bool
-            other_sample: string
+        Record_ID: string
+        Sample_ID: string
+        Label: string
+        Date: date
+        Type: category
+        Freq: category
+        Stored:
+            biorepo: bool
+            camilla: bool
+            netherlands:  bool
+            pfizer: bool
+            il10: bool
+            other: bool
+                what: string
+        Blood:
+            dna: bool
+            pax: bool
+            pbmcs: bool
+            serum: bool
+            plasma: bool
+            heparin: bool
+            whole: blool
+        Stool:
+            time_to_minus_twenty: category
+            time_to_minus_eighty: category
+            freeze: bool
+            rna_later: bool
+            ethanol: bool
+            dna_genotek: bool
+            dna_isolated: category
+        Biopsy:
+            obtained: category
+                antrum_in: bool
+                antrum_un: bool
+                corpus_in: bool
+                corpus_un: bool
+                duo_in: bool
+                duo_un: bool
+                ti_in: bool
+                ti_un: bool
+                cecum_in: bool
+                cecum_un: bool
+                right_in: bool
+                right_un: bool
+                hepa_in: bool
+                hepa_un: bool
+                trans_in: bool
+                trans_un: bool
+                splen_in: bool
+                splen_un: bool
+                left_in: bool
+                left_un: bool
+                sig_in: bool
+                sig_un: bool
+                rectum_in: bool
+                rectum_un: bool
+                pouch_in: bool
+                pouch_un: bool
+                freeze: bool
+                organoid: bool
+                rna_later: bool
+                snap: bool
+                formalin: bool
+            Medication:
+                aminosalicylate_2_wks: category
+                    mesalamine: bool
+                    balsalazide: bool
+                    sulfasalazine: bool
+                    olsalazine: bool
+                antibiotic_2_wks: category
+                    amoxicillin: bool
+                    ciproflaxcin: bool
+                    metronidazole: bool
+                    rifaximin: bool
+                    sulfamethoxazole: bool
+                    vancomycin: bool
+                    other: bool
+                        what: string
+                probiotic_1_mo: category
+                    vsl3: bool
+                    lgg: bool
+                    florastor: bool
+                    other: bool
+                        what: string
+                steroid_2_wks: category
+                    budesonide: bool
+                    hydrocortisone_enema: bool
+                    methylprednisolone: bool
+                    prednisone: bool
+                immunomodulator:  category
+                    6mp: bool
+                    azathioprine: bool
+                    methotrexate: bool
+                antitnf_3_mo: category
+                    infliximab: bool
+                    adalimumab: bool
+                    certolizumab: bool
+                    golimumab: bool
+                calcinerin_inhibitor_3_mo:
+                    cyclosporine: bool
+                    tacrolimus: bool
+                biologic_3_mo: category
+                    natalizumab: bool
+                    ustekinumab: bool
+                    vedolizumab: bool
+                    abatacept: bool
+                fecal_transplant: category
+                other_meds_2_wks: category
+                    thalidomide: bool
+                    other: bool
+                        what: string
+
+
+
+
+
+
+
+
+
+
+
+
